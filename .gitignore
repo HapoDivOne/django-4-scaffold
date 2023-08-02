@@ -1,0 +1,36 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Local development settings
+.env
+.env.local
+.env.*.local
+venv/
+*.sqlite3
+
+# Log files
+*.log
+
+# Media files
+media/
+
+# Compiled Python modules
+*.pyc
+
+# Django migration files
+**/migrations/*.py
+**/migrations/*.bak
+**/migrations/*.swp
+**/migrations/*.pyc
+**/migrations/__pycache__/
+
+# Ignore VS Code settings
+.vscode/
+
+# Ignore macOS system files
+.DS_Store
+
+# Ignore Python virtual environment files
+env/
