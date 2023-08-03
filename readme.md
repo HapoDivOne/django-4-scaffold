@@ -1,4 +1,4 @@
-## Django 10 Scaffold
+## Django 4 Scaffold
 
 Quickly set up the skeleton for your Django 4.x app. 
 With Django-4-scaffold you can quickly create CRUD generic class-based views for your models so you will have a basic CRUD API with Django Rest Framework.
