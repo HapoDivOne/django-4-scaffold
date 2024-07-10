@@ -27,7 +27,7 @@ With Django-4-scaffold you can quickly create CRUD generic class-based views for
 4. Install libs:
    ```
    pip install --upgrade pip
-   pip install -r requirement.txt
+   pip install -r requirements.txt
    ```  
 6. Create `.env`:  
    ```shell
@@ -36,6 +36,8 @@ With Django-4-scaffold you can quickly create CRUD generic class-based views for
    Set your database connection in `.env` file.
 7. Run migration:
    ```
+   python manage.py makemigrations hotels
+
    python manage.py migrate
    ```
 9. Serve local development server
@@ -45,3 +47,4 @@ With Django-4-scaffold you can quickly create CRUD generic class-based views for
    ```
    Now you can access local webserver at: http://127.0.0.1:8000
 10. Test api using Django REST framework at http://127.0.0.1:8000/api/hotels/
+11. Open swagger page api at http://127.0.0.1:8000/api/swagger

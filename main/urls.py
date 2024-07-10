@@ -18,6 +18,10 @@ from django.contrib import admin
 from django.urls import path, include  # Ensure `include` is imported
 from rest_framework import routers
 from hotels.views import HotelViewSet
+from django.urls import include, re_path
+from rest_framework_swagger.views import get_swagger_view
+from drf_yasg.views import get_schema_view
+from drf_yasg import openapi
 
 # Hotels router
 hotels_router = routers.SimpleRouter()
@@ -27,10 +31,17 @@ hotels_router.register(
     basename='hotel',
 )
 
+schema_view = get_schema_view(
+    openapi.Info(
+        title="Django-4-scaffold Swagger",
+        default_version='v1',),
+    public=True
+)
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     # API
-    path('api/', include(hotels_router.urls))
+    path('api/', include(hotels_router.urls)),
+    path('swagger', schema_view.with_ui('swagger', cache_timeout=0),name='schema-swagger-ui'),
 ]
-
 
