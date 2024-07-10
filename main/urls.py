@@ -33,7 +33,7 @@ hotels_router.register(
 
 schema_view = get_schema_view(
     openapi.Info(
-        title="Episyche Technologies",
+        title="Django-4-scaffold Swagger",
         default_version='v1',),
     public=True
 )

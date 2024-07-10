@@ -37,6 +37,8 @@ With Django-4-scaffold you can quickly create CRUD generic class-based views for
    Set your database connection in `.env` file.
 7. Run migration:
    ```
+   python manage.py makemigrations hotels
+
    python manage.py migrate
    ```
 9. Serve local development server
