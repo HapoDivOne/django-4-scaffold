@@ -27,7 +27,8 @@ With Django-4-scaffold you can quickly create CRUD generic class-based views for
 4. Install libs:
    ```
    pip install --upgrade pip
-   pip install -r requirement.txt
+   pip install -r requirements.txt
+   pip install python-dotenv
    ```  
 6. Create `.env`:  
    ```shell
