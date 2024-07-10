@@ -4,3 +4,4 @@ PyMySQL
 djangorestframework
 django-rest-swagger
 drf-yasg
+python-dotenv
