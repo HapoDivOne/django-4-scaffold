@@ -47,7 +47,8 @@ INSTALLED_APPS = [
     'users.apps.UsersConfig',
     'rest_framework_swagger',       # Swagger 
     'rest_framework',               # Django rest framework
-    'drf_yasg'                    # Yet Another Swagger generator
+    'drf_yasg',                    # Yet Another Swagger generator
+    'rest_framework_simplejwt.token_blacklist'
 ]
 
 MIDDLEWARE = [

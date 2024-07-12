@@ -7,11 +7,28 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated
 from rest_framework import viewsets
 from django.utils.translation import gettext as trans
+from rest_framework_simplejwt.tokens import RefreshToken
 
+class LogoutView(viewsets.ModelViewSet):
+    permission_classes = (IsAuthenticated,)
+    serializer_class = UserSerializer
+    
+    def logout(self, request):
+        try:
+            refresh_token = request.data["refresh"]
+            token = RefreshToken(refresh_token)
+            token.blacklist()   
+            return JsonResponse({
+                    'message': trans('register_success')
+                }, status=status.HTTP_205_RESET_CONTENT)
+        except Exception as e:
+
+            return JsonResponse({
+                'message': e,
+            }, status=status.HTTP_400_BAD_REQUEST)
 
 class UserRegister(viewsets.ModelViewSet):
      serializer_class = UserSerializer
-     queryset = User.objects.all()
      def register(self, request):
         if request.method != 'POST':
             return JsonResponse({
@@ -34,7 +51,6 @@ class UserRegister(viewsets.ModelViewSet):
 
 class UserApi(viewsets.ModelViewSet) :
     serializer_class = UserSerializer
-    queryset = User.objects.all()
     permission_classes = [IsAuthenticated]   
 
     def list(self, request):
