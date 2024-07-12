@@ -32,4 +32,3 @@ class User(AbstractBaseUser, SoftDeleteModel):
   REQUIRED_FIELDS = []
   
   objects = UserManager()
-  

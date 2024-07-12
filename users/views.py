@@ -100,4 +100,3 @@ class UserApi(viewsets.ModelViewSet) :
             return JsonResponse({
                 'message': trans('method_not_support'),
             }, status=status.HTTP_400_BAD_REQUEST)
-        

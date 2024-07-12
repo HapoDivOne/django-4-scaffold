@@ -25,4 +25,3 @@ class UserSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError(trans('valid_email_format'))
 
         return value
-     

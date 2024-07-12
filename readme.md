@@ -53,4 +53,3 @@ With Django-4-scaffold you can quickly create CRUD generic class-based views for
    ```
    django-admim compilemessages
    ```
-   
