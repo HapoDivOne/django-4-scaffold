@@ -3,11 +3,20 @@ from users.serializers import UserSerializer
 from rest_framework import status
 from django.contrib.auth.hashers import make_password
 from .models import User
-from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated
 from rest_framework import viewsets
 from django.utils.translation import gettext as trans
 from rest_framework_simplejwt.tokens import RefreshToken
+import csv
+from pathlib import Path
+from xhtml2pdf import pisa
+import pandas as pd
+
+def convert_html_to_pdf(html_string, pdf_path):
+    with open(pdf_path, "wb") as pdf_file:
+        pisa_status = pisa.CreatePDF(html_string, dest=pdf_file)
+        
+    return not pisa_status.err
 
 class LogoutView(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated,)
@@ -116,3 +125,60 @@ class UserApi(viewsets.ModelViewSet) :
             return JsonResponse({
                 'message': trans('method_not_support'),
             }, status=status.HTTP_400_BAD_REQUEST)
+
+
+class UserExport(viewsets.ModelViewSet) :
+    def export_csv(self, request): 
+        directory = Path(__file__).resolve().parent.parent
+        with open(str(directory) + '/temp.csv', 'w', newline='') as f:
+            writer = csv.writer(f, quoting=csv.QUOTE_NONNUMERIC,delimiter=',') 
+            writer.writerow(['username', 'firstname', 'lastname', 'email', 'phone_number']) 
+        
+            users = User.objects.all() 
+            for user in users: 
+                writer.writerow([user.username, user.firstname, user.lastname, user.email, user.phone_number]) 
+        
+        return JsonResponse({
+            'message' : trans('export_success')
+        }, status=status.HTTP_200_OK)
+
+
+    def export_pdf(self, request):
+        html_content = '''
+            <!DOCTYPE html>
+            <html>
+            <head>
+                <title>PDF Example</title>
+            </head>
+            <body>
+                <h1>Hello, world!</h1>
+            </body>
+            </html>
+            '''
+
+        # Generate PDF
+        directory = Path(__file__).resolve().parent.parent
+        pdf_path = str(directory) + '/temp.pdf'
+        if convert_html_to_pdf(html_content, pdf_path):
+            return JsonResponse({
+                'message' : trans('export_success')
+                }, status=status.HTTP_200_OK)
+        else:
+            return JsonResponse({
+                'message' : trans('export_failed')
+                }, status=status.HTTP_400_BAD_REQUEST)
+
+    def export_xlsx(self, request): 
+        directory = Path(__file__).resolve().parent.parent
+        data = {
+            "product_name": ["computer", "printer", "tablet", "monitor"],
+            "price": [1200, 150, 300, 450],
+        }
+
+        df = pd.DataFrame(data)
+
+        df.to_excel(str(directory) + '/temp.xlsx', index=False)
+        
+        return JsonResponse({
+            'message' : trans('export_success')
+        }, status=status.HTTP_200_OK)
