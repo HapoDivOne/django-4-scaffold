@@ -10,3 +10,4 @@ reportlab==4.2.2
 xhtml2pdf==0.2.16
 pandas==2.2.2
 python-gettext==5.0
+bcrypt==4.1.3

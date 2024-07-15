@@ -26,7 +26,6 @@ With Django-4-scaffold you can quickly create CRUD generic class-based views for
    ```
 4. Install libs:
    ```
-   sudo apt-get install gettext
    pip install --upgrade pip
    pip install -r requirements.txt
    ```  
