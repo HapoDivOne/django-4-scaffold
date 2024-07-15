@@ -44,11 +44,12 @@ jobs:
 
     - name: Run Tests
       env:
-        DB_HOST: 127.0.0.1
+        DB_HOST: localhost
         DB_PORT: 3306
         DB_NAME: testdb
-        DB_USER: testuser
-        DB_PASSWORD: testpassword
+        DB_USER: root
+        DB_PASSWORD: rootpassword
+        SECRET_KEY: ${{ secrets.SECRET_KEY }}
       run: |
         python manage.py test
   
