@@ -39,6 +39,8 @@ With Django-4-scaffold you can quickly create CRUD generic class-based views for
    ```
    python manage.py makemigrations hotels
 
+   python manage.py makemigrations users
+
    python manage.py migrate
    ```
 9. Serve local development server
