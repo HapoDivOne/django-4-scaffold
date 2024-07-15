@@ -38,6 +38,8 @@ With Django-4-scaffold you can quickly create CRUD generic class-based views for
    ```
    python manage.py makemigrations hotels
 
+   python manage.py makemigrations users
+
    python manage.py migrate
    ```
 9. Serve local development server
@@ -57,4 +59,11 @@ With Django-4-scaffold you can quickly create CRUD generic class-based views for
 13. Run unittest
    ```
    python manage.py test users
+   ```
+
+14. Export Demo Api
+   ```
+   http://127.0.0.1:8000/api/user/export-csv
+   http://127.0.0.1:8000/api/user/export-pdf
+   http://127.0.0.1:8000/api/user/export-xslx
    ```
