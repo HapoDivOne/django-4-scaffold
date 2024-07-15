@@ -1269,3 +1269,11 @@ msgstr "メソッドはサポートされていません !!"
 #: delete successe
 msgid "delete_success"
 msgstr "削除に成功しました !!"
+
+#: export successe
+msgid "export_success"
+msgstr "輸出成功 !!"
+
+#: export failed
+msgid "export_failed"
+msgstr "エクスポートに失敗しました !!"

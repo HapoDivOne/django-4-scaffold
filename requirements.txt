@@ -7,3 +7,6 @@ drf-yasg
 python-dotenv
 djangorestframework_simplejwt
 gettext
+reportlab
+xhtml2pdf
+pandas
