@@ -26,7 +26,6 @@ With Django-4-scaffold you can quickly create CRUD generic class-based views for
    ```
 4. Install libs:
    ```
-   sudo apt-get install gettext
    pip install --upgrade pip
    pip install -r requirements.txt
    ```  
@@ -38,6 +37,8 @@ With Django-4-scaffold you can quickly create CRUD generic class-based views for
 7. Run migration:
    ```
    python manage.py makemigrations hotels
+
+   python manage.py makemigrations users
 
    python manage.py migrate
    ```
