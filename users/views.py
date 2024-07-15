@@ -44,17 +44,17 @@ class UserRegister(viewsets.ModelViewSet):
                 'message': trans('method_not_support'),
             }, status=status.HTTP_400_BAD_REQUEST)
         
-        userSerializer = UserSerializer(data=request.data)
-        if userSerializer.is_valid():
-            userSerializer.validated_data['password'] = make_password(userSerializer.validated_data['password'])
-            userSerializer.save()
+        user_serializer = UserSerializer(data=request.data)
+        if user_serializer.is_valid():
+            user_serializer.validated_data['password'] = make_password(user_serializer.validated_data['password'])
+            user_serializer.save()
             return JsonResponse({
                 'message': trans('register_success')
             }, status=status.HTTP_201_CREATED)
 
         else:
             return JsonResponse({
-                'message': userSerializer.errors,
+                'message': user_serializer.errors,
             }, status=status.HTTP_400_BAD_REQUEST)
         
 
@@ -99,9 +99,9 @@ class UserApi(viewsets.ModelViewSet) :
             }, status=status.HTTP_400_BAD_REQUEST)
         
         entity = User.objects.get(id=id)
-        userSerializer = UserSerializer(entity, data=request.data)
+        user_serializer = UserSerializer(entity, data=request.data)
       
-        if userSerializer.is_valid():
+        if user_serializer.is_valid():
             entity.username = request.data.get("username")
             entity.save()
 
@@ -111,7 +111,7 @@ class UserApi(viewsets.ModelViewSet) :
 
         else:
             return JsonResponse({
-                'message': userSerializer.errors,
+                'message': user_serializer.errors,
             }, status=status.HTTP_400_BAD_REQUEST)
 
     def delete(self, request, id):
