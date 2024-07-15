@@ -5,3 +5,5 @@ djangorestframework
 django-rest-swagger
 drf-yasg
 python-dotenv
+djangorestframework_simplejwt
+gettext

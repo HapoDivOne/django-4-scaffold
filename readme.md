@@ -47,4 +47,14 @@ With Django-4-scaffold you can quickly create CRUD generic class-based views for
    ```
    Now you can access local webserver at: http://127.0.0.1:8000
 10. Test api using Django REST framework at http://127.0.0.1:8000/api/hotels/
-11. Open swagger page api at http://127.0.0.1:8000/api/swagger
+11. Open swagger page api at http://127.0.0.1:8000/swagger
+
+12. Run compile lang localte
+   ```
+   django-admim compilemessages
+   ```
+
+13. Run unittest
+   ```
+   python manage.py test users
+   ```
